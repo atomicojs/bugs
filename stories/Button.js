@@ -1,20 +1,15 @@
-import { html } from 'lit-html';
-import './button.css';
+import { c, useRef } from "atomico";
+import html from "atomico/html";
+import { useSlot } from "@atomico/hooks/use-slot";
 
-/**
- * Primary UI component for user interaction
- */
-export const Button = ({ primary, backgroundColor, size, label, onClick }) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+function button() {
+  const ref = useRef();
+  const childNodes = useSlot(ref);
 
-  return html`
-    <button
-      type="button"
-      class=${['storybook-button', `storybook-button--${size || 'medium'}`, mode].join(' ')}
-      style=${backgroundColor && { backgroundColor }}
-      @click=${onClick}
-    >
-      ${label}
-    </button>
-  `;
-};
+  return html`<host shadowDom>
+    content...
+    <slot ref=${ref}></slot>
+  </host>`;
+}
+
+export const Button = c(button);
