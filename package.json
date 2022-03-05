@@ -29,5 +29,17 @@
     "@uppercod/vite-meta-url-load-css": "latest",
     "typescript": "^4.5.5",
     "vite": "latest"
+  },
+  "module": "./dist/alert.js",
+  "exports": {
+    ".": "./dist/alert.js"
+  },
+  "types": "types/alert.d.ts",
+  "typesVersions": {
+    "*": {
+      "alert": [
+        "./types/alert.d.ts"
+      ]
+    }
   }
 }
